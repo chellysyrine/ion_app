@@ -1,23 +1,20 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+<ion-header style="background-color: transparent" >
+  <ion-navbar  hideBackButton>
+    <button  ion-button menuToggle style="display: block !important;">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Actualités</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
+<ion-content class="card-background-page">
+    <ion-card *ngFor="let item of items" (click)="itemTapped($event, item.id)">
+        <img src="http://localhost:4100/{{item.actImage}}" height="300px" />
+        <div class="card-date">{{item.date}}</div>
+        <div   class="card-title">{{item.titre}}</div>
+        <div  class="card-subtitle"> {{item.description}}</div>
+      </ion-card>
   <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+    You navigated here from <b>{{selectedItem.titre}}</b>
   </div>
 </ion-content>

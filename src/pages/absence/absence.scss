@@ -1,0 +1,70 @@
+page-absence {
+  round-progress{
+   margin:auto;
+   
+  
+
+}
+element.style {
+  width: 198px;
+  height: 250px;
+}
+
+
+ 
+
+h1{
+  margin: auto;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  color: brown;
+}
+
+
+div.style{
+  position:  relative;
+}
+span.modif{
+  position:  absolute;
+    display:  flex;
+    top: 38%;
+    width: 30pc;
+    margin: auto;
+    font-size: 3pc;
+    width: 100%;
+    height:  100%;
+    justify-content: center;
+}
+
+
+
+.background{
+  width:100%;
+  height:100%;
+  background: linear-gradient(to top, #de6262, #ffb88c)
+  //background-image: url("../../www/assets/imgs/maxresdefault.jpg")
+}
+.toolbar-background-md {
+  border-color: brown;
+  background: #f8f8f8;
+  border-bottom: 3px solid brown;
+}
+ion-title {
+  margin-left: 79px;
+}
+.toolbar-title-md {
+  padding: 0 12px;
+  font-size: 2rem;
+  font-weight: 500;
+  color: brown;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+  color: brown;
+  background-color: transparent;
+}
+.list-md {
+  margin: -4px -17px 16px;
+  background-color: transparent;
+}
+}
