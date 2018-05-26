@@ -19,13 +19,18 @@ import { Storage } from '@ionic/storage';
 })
 export class AbsencePage implements OnInit {
   items: Array<any>; 
-  //items: Array<any>;
+  items2: Array<any>;
   subItems = {};
   id: any;
   rate :number;
+  rate2:number
   current: number;
   current2: number;
+  current3:number;
+  current4:number;
+  max1:number;
   max: number;
+  nom3:string;
 
   constructor(public navCtrl: NavController, public storage: Storage, public absetudiantservice: AbsetudiantProvider, public navParams: NavParams) {
 
@@ -50,6 +55,28 @@ export class AbsencePage implements OnInit {
         });
 
       })
+      this.storage.get('id').then((val) => {
+       this.absetudiantservice.getabsencebymatiere(val).subscribe(data=>{
+        this.items2= Object.keys(data.data);
+        console.log(this.items2);
+        this.current3=data.data
+        this.absetudiantservice.getSeancebymatiere(val).subscribe(data=>{
+          this.current4=this.current3;
+          
+          console.log(this.current4);
+          this.max1=data.data;
+          console.log(this.max1)
+          
+          this.rate2 = Math.round((this.current4 * 100) / this.max1);
+        })
+       });
+
+
+
+
+
+
+      })
   
   }
 
@@ -57,8 +84,9 @@ export class AbsencePage implements OnInit {
     this.storage.get('id').then((val) => {
       this.absetudiantservice.getabsenceEtudiant(val).subscribe(data => {
         this.items =  Object.keys(data.data);
+        //console.log(this.items);
         this.subItems = data.data;
-        console.log(data.data);
+        //console.log(data.data);
         
         
        
@@ -74,14 +102,6 @@ export class AbsencePage implements OnInit {
   }
 
 
-  /*itemmSelected( ) {
-    this.storage.get('id').then((val) => {
-      this.absetudiantservice.getabsenceEtudiant(val).subscribe(data => {
-        this.subItems = data.data;
-      })
-
-    });
-  }*/
 
 
   itemsel:number;

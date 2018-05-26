@@ -22,4 +22,12 @@ export class AbsetudiantProvider   {
     return this.http.get("http://localhost:4100/seancetudiant/seance/"+ id);
   }
 
+  getSeancebymatiere(id : number):Observable<any>{
+    return this.http.get("http://localhost:4100/seancetudiant/seancebymatiere/"+ id);
+  }
+  
+  getabsencebymatiere(id : number):Observable<any>{
+    return this.http.get("http://localhost:4100/absetudiant/nombre/"+ id);
+  }
+
 }

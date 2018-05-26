@@ -23,6 +23,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ActualitesProvider } from '../providers/actualites/actualites';
 import { NotesProvider } from '../providers/notes/notes';
 import { Calendar } from '@ionic-native/calendar';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+
+
+
 import { IonicStorageModule } from '@ionic/storage';
 import { AbsetudiantProvider } from '../providers/absetudiant/absetudiant';
 
@@ -71,7 +77,9 @@ import { AbsetudiantProvider } from '../providers/absetudiant/absetudiant';
     ActualitesProvider,
     NotesProvider,
     AbsetudiantProvider,
-    
+    File,
+    FileTransfer,
+    DocumentViewer
   ]
 })
 export class AppModule {}

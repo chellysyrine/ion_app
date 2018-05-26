@@ -1,6 +1,9 @@
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File} from '@ionic-native/file';
+
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Calendar } from '@ionic-native/calendar';
 
 /**
  * Generated class for the OnePage page.
@@ -14,65 +17,30 @@ import { Calendar } from '@ionic-native/calendar';
   templateUrl: 'one.html',
 })
 export class OnePage {
-  date: any;
-daysInThisMonth: any;
-daysInLastMonth: any;
-daysInNextMonth: any;
-monthNames: string[];
-currentMonth: any;
-currentYear: any;
-currentDate: any;
+ 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private document:DocumentViewer, private file: File,private transfer:FileTransfer) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OnePage');
   }
-  getDaysOfMonth() {
-    this.daysInThisMonth = new Array();
-    this.daysInLastMonth = new Array();
-    this.daysInNextMonth = new Array();
-    this.currentMonth = this.monthNames[this.date.getMonth()];
-    this.currentYear = this.date.getFullYear();
-    if(this.date.getMonth() === new Date().getMonth()) {
-      this.currentDate = new Date().getDate();
-    } else {
-      this.currentDate = 999;
+  openLocalPdf() {
+    const options: DocumentViewerOptions = {
+      title: 'My PDF'
     }
-  
-    var firstDayThisMonth = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
-    var prevNumOfDays = new Date(this.date.getFullYear(), this.date.getMonth(), 0).getDate();
-    for(var i = prevNumOfDays-(firstDayThisMonth-1); i <= prevNumOfDays; i++) {
-      this.daysInLastMonth.push(i);
-    }
-  
-    var thisNumOfDays = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0).getDate();
-    for (var i = 0; i < thisNumOfDays; i++) {
-      this.daysInThisMonth.push(i+1);
-    }
-  
-    var lastDayThisMonth = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0).getDay();
-    var nextNumOfDays = new Date(this.date.getFullYear(), this.date.getMonth()+2, 0).getDate();
-    for (var i = 0; i < (6-lastDayThisMonth); i++) {
-      this.daysInNextMonth.push(i+1);
-    }
-    var totalDays = this.daysInLastMonth.length+this.daysInThisMonth.length+this.daysInNextMonth.length;
-    if(totalDays<36) {
-      for(var i = (7-lastDayThisMonth); i < ((7-lastDayThisMonth)+7); i++) {
-        this.daysInNextMonth.push(i);
-      }
-    }
+    this.document.viewDocument('assets/Rapport-1.pdf', 'application/pdf', options);
   }
-  goToLastMonth() {
-    this.date = new Date(this.date.getFullYear(), this.date.getMonth(), 0);
-    this.getDaysOfMonth();
+ 
+  downloadAndOpenPdf() {
+    let path = null;
+ 
+    const transfer = this.transfer.create();
+    transfer.download('https://devdactic.com/html/5-simple-hacks-LBT.pdf', path + 'myfile.pdf').then(entry => {
+      let url = entry.toURL();
+      this.document.viewDocument(url, 'application/pdf', {});
+    });
   }
-  goToNextMonth() {
-    this.date = new Date(this.date.getFullYear(), this.date.getMonth()+2, 0);
-    this.getDaysOfMonth();
-  }
-
 }
 
 

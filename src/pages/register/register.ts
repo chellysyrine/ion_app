@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { ListPage } from './../list/list';
 import { EtudiantProvider } from './../../providers/etudiant/etudiant';
 import { Component } from '@angular/core';
@@ -49,7 +50,7 @@ export class RegisterPage {
     if (this.isValid === keys.length) {
       this.registerService.addEtudiant(this.registerForm).subscribe(data => {
         if(data[0]){
-          this.navCtrl.push(ListPage);
+          this.navCtrl.push(HomePage);
         }else {
           this.alertMessage = '';
         }
