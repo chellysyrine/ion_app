@@ -21,26 +21,32 @@ page-list {
           position: absolute;
           color: brown;
           top:23px;
-          margin-left: 229px;
+          
+          font-size: 18px;
+    margin-left: 301px;
         }
         
         .card-title {
           position: absolute;
-          top:  91px;
-          font-size: 2.5em;
+          top: 36%;
+          font-size: 2.0em;
           width: 100%;
-          font-weight: bold;
-          color:white;
+          font-weight: 500;
+          color: bisque;
+          font-family: "ananda";
+
         }
       
         .card-subtitle {
-          font-size: 1.0em;
+          font-size:  18px;
           position: absolute;
-          top: 65%;
+          top: 52%;
           width: 100%;
-          color: #fff;
+          color: 555353;
           max-height: 3.6em; /* (Number of lines you want visible) * (line-height) */
-          line-height: 10.2em;
+          line-height: 14.2em;
+          font-family:"glametrix";
+          text-overflow: ellipsis;
         }
       
       }

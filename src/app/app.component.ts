@@ -1,4 +1,3 @@
-import { OnePage } from './../pages/one/one';
 import { ActualitesProvider } from './../providers/actualites/actualites';
 import { AbsencePage } from './../pages/absence/absence';
 import { NotesPage } from './../pages/notes/notes';
@@ -31,7 +30,7 @@ export class MyApp {
       { title : 'Notes infos', component : NotesPage, icon:"list"},
       { title : 'Absence', component: AbsencePage, icon:"school" },
       { title: 'Deconnexion', component: HomePage, icon :"home" },
-      { title: 'one', component: OnePage, icon :"home" }
+     
     ];
 
   }

@@ -1,4 +1,4 @@
-import { OnePage } from './../one/one';
+import { Etudiant } from './../../models/etudiant';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -23,7 +23,9 @@ export class AbsencePage implements OnInit {
   subItems = {};
   id: any;
   rate :number;
+  EtudiantAbsObject = {};
   rate2:number
+
   current: number;
   current2: number;
   current3:number;
@@ -31,6 +33,7 @@ export class AbsencePage implements OnInit {
   max1:number;
   max: number;
   nom3:string;
+  rates: Array<any>;
 
   constructor(public navCtrl: NavController, public storage: Storage, public absetudiantservice: AbsetudiantProvider, public navParams: NavParams) {
 
@@ -40,6 +43,19 @@ export class AbsencePage implements OnInit {
   }
 
   ionViewDidLoad() {
+
+    this.storage.get('id').then((val) => {
+      this.absetudiantservice.getabsenceEtudiant(val).subscribe(data => {
+        this.items =  Object.keys(data.data);
+        //console.log(this.items);
+        this.subItems = data.data;
+        //console.log(data.data);
+        
+        
+       
+      }) 
+
+    });
     this.storage.get('id').then((val) => {
       this.absetudiantservice.getNombreabsence(val).subscribe(data => {
        
@@ -58,16 +74,25 @@ export class AbsencePage implements OnInit {
       this.storage.get('id').then((val) => {
        this.absetudiantservice.getabsencebymatiere(val).subscribe(data=>{
         this.items2= Object.keys(data.data);
-        console.log(this.items2);
+        
         this.current3=data.data
+       
         this.absetudiantservice.getSeancebymatiere(val).subscribe(data=>{
           this.current4=this.current3;
-          
-          console.log(this.current4);
+          console.log(this.current4)
           this.max1=data.data;
-          console.log(this.max1)
-          
-          this.rate2 = Math.round((this.current4 * 100) / this.max1);
+          this.items2.forEach((key,i) => {
+            
+            this.current4[key].forEach(element => {
+                let lang = key;
+                this.EtudiantAbsObject[key] = {
+                  rate:Math.round((element * 100) / this.max1[key][0]),
+                  lang: lang
+                }
+               console.log(this.items);
+              })
+            });
+          //this.rate2 = Math.round((this.current4 * 100) / this.max1);
         })
        });
 
@@ -81,18 +106,6 @@ export class AbsencePage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.get('id').then((val) => {
-      this.absetudiantservice.getabsenceEtudiant(val).subscribe(data => {
-        this.items =  Object.keys(data.data);
-        //console.log(this.items);
-        this.subItems = data.data;
-        //console.log(data.data);
-        
-        
-       
-      }) 
-
-    });
    
     
     

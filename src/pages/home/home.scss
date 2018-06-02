@@ -2,9 +2,9 @@ page-home {
     .background{
         width:100%;
         height:100%;
-        background:linear-gradient(to top ,#de6262, #ffb88c)
+        //background:linear-gradient(to top ,#de6262, #ffb88c);
 
-        //background-image: url("../../www/assets/imgs/maxresdefault.jpg")
+        background-image :  url("/assets/imgs/007.png")
     }
    .scroll-content{
        text-align:center;
@@ -12,10 +12,10 @@ page-home {
 
    }
    img {
-    margin-left: -41px;
-    margin-top: 29px;
-    margin-bottom: -21px;
-    max-width: 100%;
+    margin-left: -15px;
+    margin-top: 49px;
+    margin-bottom: -26px;
+    max-width: 89%;
     border: 0;
 }
    ion-card.card{

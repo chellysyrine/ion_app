@@ -7,22 +7,10 @@ import {Observable} from "rxjs/Observable";
 export class EtudiantProvider {
 
   constructor(public http: HttpClient) { }
-  getEtudiants():Observable<any>{
-    return this.http.get("http://localhost:4100/etudiants");
+  verifEtudiants(data):Observable<any>{
+    return this.http.post<any>("http://localhost:4100/etudiants/verif",data );
   }
- getEtudiantbyId(id : number) :Observable<any> {
-    return this.http.get("http://localhost:4100/etudiants/"+ id );
- }
-addEtudiant(data) : Observable<any>{
-    return this.http.post("http://localhost:4100/etudiants", data);
-}
-updateEtudiant(id : number, data) : Observable<any>{
-    return this.http.put("http://localhost:4100/etudiants/" +id, data);
-
-}
-deleteEtudiant(id : number) : Observable<any>{
-    return this.http.delete("http://localhost:4100/etudiants/"+id );
-}
+ 
 
 
 }

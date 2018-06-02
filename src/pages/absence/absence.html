@@ -20,21 +20,21 @@
       {{rate}} %
     </span>
   
-      <round-progress [current]="current" [max]="max" ></round-progress>
+      <round-progress [current]="current" [max]="max"  class="effet" ></round-progress>
   </div>
   <h1>Taux total d'absence </h1>
   <ion-list style="background-color: transparent;" no-lines  >
     <div *ngFor="let item of items;let i = index">
         <button style="background-color: transparent;
-        border-bottom: 2px solid brown"  ion-item (click)="itemSelected(i) "  >
-          {{item}}
+        border-bottom: 2px solid brown"  ion-item (click)="itemSelected(i) " *ngIf="EtudiantAbsObject[item]"  >
+          {{EtudiantAbsObject[item].lang}}
             <ion-icon name="arrow-dropdown"></ion-icon>
             
-            <ion-badge  item-end>{{rate2}}</ion-badge>
+            <ion-badge item-end>{{EtudiantAbsObject[item].rate}}</ion-badge>
           </button> 
              <ion-list style="background-color: transparent;"  *ngIf="i==itemsel" >
                <button style="background-color: transparent;"  *ngFor="let elem of subItems[item]"  ion-item  >
-                {{ elem | date:'yyyy-MM-dd HH:mm:ss Z'}}
+                {{ elem | date:'yyyy-MM-dd'}}
                </button>
       
       

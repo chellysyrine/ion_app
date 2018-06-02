@@ -10,7 +10,7 @@
 <ion-content class="card-background-page">
     <ion-card *ngFor="let item of items" (click)="itemTapped($event, item.id)">
         <img src="http://localhost:4100/{{item.actImage}}" height="300px" />
-        <div class="card-date">{{item.date}}</div>
+        <div class="card-date">{{item.date | date:'dd-MM-yyyy'  }} </div>
         <div   class="card-title">{{item.titre}}</div>
         <div  class="card-subtitle"> {{item.description}}</div>
       </ion-card>

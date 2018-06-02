@@ -1,13 +1,14 @@
 <ion-menu  style="background-color: transparent" [content]="content"  >
-  <ion-header class="modif">
-    <img style="height: 144px;
-    margin-top: 39px;" src="../assets/imgs/logoesmod.png"  />
+  
 
-  </ion-header>
+
+
+
+
 
   <ion-content style="background:linear-gradient(to top ,#de6262, #ffb88c) ; background-size: cover ;border: 2px solid brown" >
-    <ion-list menuClose style="background-color: transparent;     margin: 87px -2px 11px -2px; " >
-      <button class="list-border" ion-item  style="background-color: transparent; border-bottom: 3px solid brown ;"  *ngFor="let p of pages" (click)="openPage(p)">
+    <ion-list menuClose style = "background-color: transparent;     margin: 218px -2px 11px -2px; " >
+      <button class="list-border" ion-item  style="background-color: transparent;  border-bottom: 3px solid brown ;"  *ngFor="let p of pages" (click)="openPage(p)">
           <ion-icon style ="color: brown; "item-start [name]="p.icon"></ion-icon>
         {{p.title}}
       </button>

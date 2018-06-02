@@ -1,4 +1,3 @@
-import { OnePage } from './../pages/one/one';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { NotedetailPage } from './../pages/notedetail/notedetail';
 import { AbsencePage } from './../pages/absence/absence';
@@ -43,7 +42,7 @@ import { AbsetudiantProvider } from '../providers/absetudiant/absetudiant';
     NotesPage,
     AbsencePage,
     NotedetailPage,
-    OnePage
+    
   ],
   imports: [
     BrowserModule,
@@ -63,7 +62,7 @@ import { AbsetudiantProvider } from '../providers/absetudiant/absetudiant';
     NotesPage,
     AbsencePage,
     NotedetailPage,
-    OnePage
+   
   ],
   providers: [
     StatusBar,

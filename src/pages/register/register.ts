@@ -21,12 +21,9 @@ export class RegisterPage {
   alertMessage = '';
   registerForm ={
     email:'',
-    password:'',
-    firstName:'',
-    lastName:'',  
-    date_naissance:'',
+   
     cin:'',
-    username:''
+   
   };
   constructor(public navCtrl: NavController,public alertCtrl: AlertController, public navParams: NavParams, public registerService:EtudiantProvider) {
   }
@@ -37,6 +34,63 @@ export class RegisterPage {
   }
   
   register() {
+this.registerService.verifEtudiants(this.registerForm).subscribe(data =>{
+console.log(data);
+if(data.success){
+  
+    let prompt = this.alertCtrl.create({
+      title: 'Mot de passe ',
+      message: "Créér votre mot de passe ",
+      inputs: [
+        {
+          type: 'password',
+          name: 'password',
+          placeholder: 'mot de passe'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Quitter',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Enregistrer',
+          handler: data => {
+            this.navCtrl.push(HomePage);
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+  else {
+    let alert = this.alertCtrl.create({
+      title: 'Erreur',
+      subTitle: 'Vous n étes pas un etudiant de cette universite',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  
+
+}
+)
+
+
+
+
+}
+
+}
+
+
+
+
+
+    /*
     let keys = Object.keys(this.registerForm);
     this.isValid = 0;
     let invalid = [];
@@ -67,7 +121,5 @@ export class RegisterPage {
         buttons: ['OK']
       });
       alert.present();
-    }
-  }
-
-}
+    }*/
+ 
